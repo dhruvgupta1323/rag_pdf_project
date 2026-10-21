@@ -37,8 +37,9 @@ If you only want to deploy one service (or prefer manual setup):
    - **Runtime:** `Docker`
    - **Dockerfile Path:** `Dockerfile.frontend` (or `Dockerfile` with `SERVICE_TYPE=frontend`)
    - **Instance Type:** `Free`
-4. Add Environment Variable:
-   - `GEMINI_API_KEY` = `<your-google-gemini-api-key>`
+4. Add Environment Variables:
+   - `BACKEND_URL` = `https://rag-pdf-project-4xkb.onrender.com`
+   - `GEMINI_API_KEY` = `<your-google-gemini-api-key>` (optional fallback)
 5. Click **Create Web Service**.
 
 ### Deploying the FastAPI Backend:

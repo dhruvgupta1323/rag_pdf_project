@@ -29,6 +29,7 @@ services:
     environment:
       - PORT=8501
       - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - BACKEND_URL=${BACKEND_URL:-http://backend:8000}
     env_file:
       - .env
     depends_on:

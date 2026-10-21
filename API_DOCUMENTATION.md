@@ -17,9 +17,10 @@ python main.py
 ```
 
 ### 2. Interactive API Documentation
-Once running, open your browser:
-- **Swagger UI:** [http://localhost:8000/docs](http://localhost:8000/docs)
-- **ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- **Live Render Swagger UI:** [https://rag-pdf-project-4xkb.onrender.com/docs](https://rag-pdf-project-4xkb.onrender.com/docs)
+- **Live Render ReDoc:** [https://rag-pdf-project-4xkb.onrender.com/redoc](https://rag-pdf-project-4xkb.onrender.com/redoc)
+- **Local Swagger UI:** [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Local ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
 ---
 
