@@ -18,7 +18,7 @@ try:
     from rag.vector_store import build_vector_store, search_chunks
     from rag.generator import generate_answer
     LOCAL_RAG_AVAILABLE = True
-except ImportError:
+except (ImportError, Exception):
     LOCAL_RAG_AVAILABLE = False
 
 
@@ -28,9 +28,18 @@ except ImportError:
 
 REPORT_PATH = Path(__file__).resolve().parent / "rag_evaluation_report.csv"
 MIN_SCORE = 0.30
-DEFAULT_BACKEND_URL = os.getenv(
-    "BACKEND_URL",
-    "https://rag-pdf-project-4xkb.onrender.com",
+
+# Retrieve backend URL from Streamlit secrets (Streamlit Cloud) or environment variable
+_secret_backend = None
+try:
+    if hasattr(st, "secrets") and "BACKEND_URL" in st.secrets:
+        _secret_backend = st.secrets["BACKEND_URL"]
+except Exception:
+    pass
+
+DEFAULT_BACKEND_URL = (
+    _secret_backend
+    or os.getenv("BACKEND_URL", "https://rag-pdf-project-4xkb.onrender.com")
 ).strip().rstrip("/")
 
 st.set_page_config(

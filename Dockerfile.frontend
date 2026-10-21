@@ -9,20 +9,15 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# Install minimal OS dependencies needed for FAISS and PyMuPDF
+# Install minimal OS dependencies needed for health checks
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libgomp1 \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Pre-install CPU-only PyTorch
+# Install lightweight frontend requirements (keeps RAM < 100MB for Render free tier)
+COPY requirements-frontend.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
-
-# Install project Python requirements
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements-frontend.txt
 
 # Copy application source code
 COPY . .
@@ -31,7 +26,7 @@ COPY . .
 EXPOSE 8501
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
     CMD curl -f http://localhost:${PORT:-8501}/_stcore/health || exit 1
 
 # Start Streamlit with dynamic port handling for Render
