@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Python virtual environment and caches
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+*$py.class
+*.pytest_cache
+.coverage
+htmlcov
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# IDE / Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# Temporary and log files
+*.log
+docker-compose.override.yml

@@ -1,0 +1,32 @@
+services:
+  # ----------------------------------------------------
+  # FASTAPI BACKEND WEB SERVICE
+  # ----------------------------------------------------
+  - type: web
+    name: rag-backend
+    runtime: docker
+    dockerfilePath: Dockerfile.backend
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Set securely in Render dashboard
+      - key: PORT
+        value: 10000
+
+  # ----------------------------------------------------
+  # STREAMLIT FRONTEND WEB SERVICE
+  # ----------------------------------------------------
+  - type: web
+    name: rag-frontend
+    runtime: docker
+    dockerfilePath: Dockerfile.frontend
+    plan: free
+    region: oregon
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Set securely in Render dashboard
+      - key: PORT
+        value: 10000

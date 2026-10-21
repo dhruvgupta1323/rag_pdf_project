@@ -1,0 +1,24 @@
+
+[
+  {
+    "id": "Q1",
+    "question": "What is the main subject of this document?",
+    "answerable": true,
+    "reference_answer": "The Finance Bill gives effect to the Central Government's financial proposals for the financial year 2026-2027.",
+    "relevant_pages": [171]
+  },
+  {
+    "id": "Q2",
+    "question": "What financial year are the Central Government's financial proposals intended for?",
+    "answerable": true,
+    "reference_answer": "The financial year is 2026-2027.",
+    "relevant_pages": [9, 171, 232]
+  },
+  {
+    "id": "Q3",
+    "question": "What is the population of Japan according to this document?",
+    "answerable": false,
+    "reference_answer": "",
+    "relevant_pages": []
+  }
+]
